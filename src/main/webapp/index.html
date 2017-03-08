@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		url:"/show/getAll",
+		error:function(){
+			alert("Error");
+		},
+		success:function(data){
+			$("#data").html("");
+			
+			for(var i=0;i<data.length;i++){
+				$("#data").append(data[i].name+", <br />");				
+			}
+		}
+	});
+});
+	
+	
+</script>
+
+
+</head>
+<body>
+
+<div id="data">
+
+</div>
+<h1>Add New Event</h1>
+
+
+<div>
+<form method="post" action="/show/add">
+
+ID<input type="text" name="id"/><br />
+Name<input type="text" name="name"/><br />
+Vanue ID<input type="text" name="vanue.id"/><br />
+Vanue Name<input type="text" name="vanue.name"/><br />
+State<input type="text" name="vanue.state"/><br />
+City<input type="text" name="vanue.city"/><br />
+Zip<input type="text" name="vanue.zip"/><br />
+
+<input type="submit" value="Add" />
+
+</form>
+</div>
+</body>
+</html>
